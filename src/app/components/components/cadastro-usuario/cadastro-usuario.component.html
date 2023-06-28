@@ -1,0 +1,22 @@
+<form id="myForm" (ngSubmit)="addUsuario()" #f="ngForm">
+  <div class="col-6">
+    <label for="id">ID</label>
+    <input type="text" name="id" id="id" [(ngModel)]="model.id" class="form-control">
+  </div>
+  <div class="col-6">
+    <label for="nome">NOME</label>
+    <input type="text" name="nome" id="nome" [(ngModel)]="model.nome" class="form-control">
+  </div>
+  <div class="col-6">
+    <label for="idade">IDADE</label>
+    <input type="number" name="idade" id="idade" [(ngModel)]="model.idade" class="form-control">
+  </div>
+
+  <div class="col-6">
+    <label for="perfil">PERFIL</label>
+    <input type="text" name="perfil" id="perfil" [(ngModel)]="model.perfil" class="form-control">
+  </div>
+  <div class="col-6">
+    <button class="btn btn-primary" type="submit">SALVAR</button>
+  </div>
+</form>

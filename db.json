@@ -1,0 +1,22 @@
+{
+  "usuario": [
+    {
+      "id": 1,
+      "nome": "Maria riata",
+      "idade": 5,
+      "pefil": "adm"
+    },
+    {
+      "id": 1,
+      "nome": "Maria julia",
+      "idade": 1,
+      "pefil": "adm"
+    },
+    {
+      "id": 2,
+      "nome": "landosn",
+      "idade": 1,
+      "perfil": "teste 1"
+    }
+  ]
+}
