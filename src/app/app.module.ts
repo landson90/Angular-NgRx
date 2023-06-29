@@ -8,10 +8,25 @@ import { ListarUsuarioComponent } from './components/listar-usuario/listar-usuar
 import { MainComponent } from './components/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { CadastroUsuarioComponent } from './components/components/cadastro-usuario/cadastro-usuario.component';
+import { StoreModule } from '@ngrx/store';
+import { appEffect, appReducer } from './store/app-state';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ListarUsuarioComponent, CadastroUsuarioComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    ListarUsuarioComponent,
+    CadastroUsuarioComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot(appEffect),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
