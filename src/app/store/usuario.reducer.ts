@@ -8,17 +8,20 @@ import {
 import { UsuarioModel } from '../models/usuario-model';
 
 import * as fromUsuariosAction from './usuario.action';
+import { state } from '@angular/animations';
 
 export interface UsuariosState {
   usuarios: UsuarioModel[];
   usuario: UsuarioModel | null;
   error: string | '';
+  cal: number;
 }
 
 export const initialState: UsuariosState = {
   usuarios: [],
   usuario: null,
   error: '',
+  cal: 0,
 };
 
 // Aqui vamos implementar os nossos REDUCER
@@ -28,6 +31,7 @@ const _usuariosReducer = createReducer(
     ...state,
     usuarios: payload,
     error: '',
+    cal: somar(payload),
   })),
 
   on(fromUsuariosAction.LoadUsuariosFail, (state, { error }) => ({
@@ -110,3 +114,33 @@ export const getUsuarioError = createSelector(
   getUsuariosFeatureState,
   (state: UsuariosState) => state.error
 );
+
+export const getUsuarioPerfil = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState) => state.usuarios.filter((f) => f.perfil == 'adm')
+);
+
+export const getUsuarioPerfilComParametro = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState, props: { perfil: string }) =>
+    state.usuarios.filter((f) => f.perfil === props.perfil)
+);
+
+export const getUsuarioIdades = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState) => state.usuarios.map((i) => i.idade)
+);
+
+export const getSomaDasIdades = createSelector(
+  getUsuariosFeatureState,
+  (state: UsuariosState) => state.cal
+);
+
+function somar(item: UsuarioModel[]): number {
+  const i = item.map((c) => c.idade);
+  let somaDasIdades = 0;
+  for (var c = 0; c < i.length; c++) {
+    somaDasIdades += i[c];
+  }
+  return somaDasIdades;
+}
